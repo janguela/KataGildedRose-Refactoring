@@ -72,12 +72,17 @@ describe("Gilded Rose,", function() {
     describe("the 'Sulfuras' (legendary item)", function() {
       beforeEach(function () {
         this.sellIn = -1;
-        items = [new Item("Sulfuras, Hand of Ragnaros", this.sellIn, 10)];
+        this.quality = 50;
+        items = [new Item("Sulfuras, Hand of Ragnaros", this.sellIn, this.quality)];
         update_quality();
       });
 
       it("never has to be sold", function () {
         expect(items[0].sell_in).toEqual(this.sellIn);
+      });
+
+      it("never decreases in Quality", function () {
+        expect(items[0].quality).toEqual(this.quality);
       });
     });
   });
