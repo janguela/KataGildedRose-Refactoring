@@ -1,11 +1,12 @@
 describe("Gilded Rose,", function() {
 
-  describe("products", function() {
+  describe("a product", function() {
 
-    it("have a name", function() {
-      items = [ new Item("Crafted beer", 0, 0) ];
+    it("has a name", function() {
+      var name = "Crafted beer";
+        items = [ new Item(name, 0, 0) ];
       update_quality();
-      expect(items[0].name).toEqual("Crafted beer");
+      expect(items[0].name).toEqual(name);
     });
   });
 });
