@@ -53,6 +53,13 @@ describe("Gilded Rose,", function() {
         GR.update_quality(items);
         expect(items[0].quality).toEqual(quality + 1);
       });
+
+      it("increases in Quality by 2 after the Sell In date", function () {
+        var quality = 10;
+        var items = [new GR.Item("Aged Brie", -10, quality)];
+        GR.update_quality(items);
+        expect(items[0].quality).toEqual(quality + 2);
+      });
     });
 
     describe("the Quality of an item", function() {
