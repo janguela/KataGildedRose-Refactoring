@@ -1,7 +1,7 @@
 describe("Gilded Rose,", function() {
 
   describe("a product", function() {
-    it("has a name", function() {
+    it("has a Name", function() {
       var name = "Crafted beer";
       var item = new Item(name, 0, 0);
       expect(item.name).toEqual(name);
@@ -21,7 +21,6 @@ describe("Gilded Rose,", function() {
   });
 
   describe("at the end of each day", function() {
-
     it("SellIn value is decreased by 1", function() {
       var sellInValue = 10;
       items = [new Item("Item", sellInValue, 10)];
@@ -37,12 +36,27 @@ describe("Gilded Rose,", function() {
     });
 
     describe("once the sell by date has passed", function() {
-
       it("Quality degrades twice as fast", function () {
         var quality = 10;
         items = [new Item("Item", 0, 10)];
         update_quality();
         expect(items[0].quality).toEqual(quality - 2);
+      });
+    });
+
+    it("the Quality of an item is never negative", function() {
+      var quality = 0;
+      items = [new Item("Item", 0, quality)];
+      update_quality();
+      expect(items[0].quality).toEqual(0);
+    });
+
+    describe("the 'Aged Brie'", function() {
+      it("actually increases in Quality the older it gets", function () {
+        var quality = 10;
+        items = [new Item("Aged Brie", 10, 10)];
+        update_quality();
+        expect(items[0].quality).toEqual(quality + 1);
       });
     });
   });
