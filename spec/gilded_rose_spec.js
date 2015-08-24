@@ -95,7 +95,7 @@ describe("Gilded Rose,", function() {
     describe("the 'Sulfuras' (legendary item)", function() {
       beforeEach(function () {
         this.sellIn = -9999;
-        this.quality = 50;
+        this.quality = 80;
         this.items = [new GR.Item("Sulfuras, Hand of Ragnaros", this.sellIn, this.quality)];
         GR.update_quality(this.items);
       });
