@@ -119,6 +119,14 @@ describe("Gilded Rose,", function() {
         expect(items[0].quality).toEqual(quality + 2);
       });
 
+      it("Quality doesn't increase above 50", function () {
+        var sellIn = 2;
+        var quality = 49;
+        var items = [new GR.Item("Backstage passes to a TAFKAL80ETC concert", sellIn, quality)];
+        GR.update_quality(items);
+        expect(items[0].quality).toEqual(50);
+      });
+
       it("Quality increases by 3 when there are 5 days or less left", function () {
         var sellIn = 5;
         var quality = 10;
