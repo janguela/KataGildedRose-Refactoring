@@ -35,5 +35,15 @@ describe("Gilded Rose,", function() {
       update_quality();
       expect(items[0].quality).toEqual(quality - 1);
     });
+
+    describe("once the sell by date has passed", function() {
+
+      it("Quality degrades twice as fast", function () {
+        var quality = 10;
+        items = [new Item("Item", 0, 10)];
+        update_quality();
+        expect(items[0].quality).toEqual(quality - 2);
+      });
+    });
   });
 });
