@@ -40,9 +40,16 @@ describe("Gilded Rose,", function() {
     describe("once the sell by date has passed", function() {
       it("Quality degrades twice as fast", function () {
         var quality = 10;
-        var items = [new GR.Item("Item", 0, 10)];
+        var items = [new GR.Item("Item", 0, quality)];
         GR.update_quality(items);
         expect(items[0].quality).toEqual(quality - 2);
+      });
+
+      it("Quality degrades twice as fast but never below 0", function () {
+        var quality = 1;
+        var items = [new GR.Item("Item", 0, quality)];
+        GR.update_quality(items);
+        expect(items[0].quality).toEqual(0);
       });
     });
 
