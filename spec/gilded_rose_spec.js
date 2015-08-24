@@ -87,15 +87,20 @@ describe("Gilded Rose,", function() {
     });
 
     describe("the 'Backstage passes'", function() {
-      beforeEach(function () {
-        this.sellIn = 30;
-        this.quality = 10;
-        items = [new Item("Backstage passes to a TAFKAL80ETC concert", this.sellIn, this.quality)];
+      it("(like aged brie) increases in Quality as it's Sell In value approaches", function () {
+        var sellIn = 30;
+        var quality = 10;
+        items = [new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, quality)];
         update_quality();
+        expect(items[0].quality).toEqual(quality + 1);
       });
 
-      it("(like aged brie) increases in Quality as it's Sell In value approaches", function () {
-        expect(items[0].quality).toEqual(this.quality + 1);
+      it("Quality increases by 2 when there are 10 days or less left", function () {
+        var sellIn = 10;
+        var quality = 10;
+        items = [new Item("Backstage passes to a TAFKAL80ETC concert", sellIn, quality)];
+        update_quality();
+        expect(items[0].quality).toEqual(quality + 2);
       });
     });
   });
