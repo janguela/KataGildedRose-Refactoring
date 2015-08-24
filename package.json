@@ -1,0 +1,14 @@
+{
+  "name": "GildedRose-Refactoring",
+  "version": "1.0.0",
+  "main": "src/app.js",
+  "author": "Jordi Anguela",
+  "license": "GPL-3.0",
+  "dependencies": {
+    "jasmine-node": "^1.14.5"
+  },
+  "devDependencies": {
+    "istanbul": "0.3.2"
+  },
+  "scripts": {}
+}
