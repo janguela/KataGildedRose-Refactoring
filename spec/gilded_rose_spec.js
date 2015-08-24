@@ -71,7 +71,7 @@ describe("Gilded Rose,", function() {
 
     describe("the 'Sulfuras' (legendary item)", function() {
       beforeEach(function () {
-        this.sellIn = -1;
+        this.sellIn = 9999;
         this.quality = 50;
         items = [new Item("Sulfuras, Hand of Ragnaros", this.sellIn, this.quality)];
         update_quality();
@@ -83,6 +83,19 @@ describe("Gilded Rose,", function() {
 
       it("never decreases in Quality", function () {
         expect(items[0].quality).toEqual(this.quality);
+      });
+    });
+
+    describe("the 'Backstage passes'", function() {
+      beforeEach(function () {
+        this.sellIn = 30;
+        this.quality = 10;
+        items = [new Item("Backstage passes to a TAFKAL80ETC concert", this.sellIn, this.quality)];
+        update_quality();
+      });
+
+      it("(like aged brie) increases in Quality as it's Sell In value approaches", function () {
+        expect(items[0].quality).toEqual(this.quality + 1);
       });
     });
   });
