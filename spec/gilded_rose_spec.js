@@ -19,4 +19,14 @@ describe("Gilded Rose,", function() {
       expect(item.quality).toEqual(qualityValue);
     });
   });
+
+  describe("at the end of each day", function() {
+
+    it("SellIn value is decreased by 1", function() {
+      var sellInValue = 10;
+      items = [new Item("Item", sellInValue, 0)];
+      update_quality();
+      expect(items[0].sell_in).toEqual(sellInValue - 1);
+    });
+  });
 });
