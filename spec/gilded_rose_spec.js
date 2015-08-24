@@ -24,9 +24,16 @@ describe("Gilded Rose,", function() {
 
     it("SellIn value is decreased by 1", function() {
       var sellInValue = 10;
-      items = [new Item("Item", sellInValue, 0)];
+      items = [new Item("Item", sellInValue, 10)];
       update_quality();
       expect(items[0].sell_in).toEqual(sellInValue - 1);
+    });
+
+    it("Quality value is decreased by 1", function() {
+      var quality = 10;
+      items = [new Item("Item", 10, quality)];
+      update_quality();
+      expect(items[0].quality).toEqual(quality - 1);
     });
   });
 });
