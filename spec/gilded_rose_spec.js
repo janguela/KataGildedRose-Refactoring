@@ -69,6 +69,13 @@ describe("Gilded Rose,", function() {
         GR.update_quality(items);
         expect(items[0].quality).toEqual(quality);
       });
+
+      it("is never more than 50 (even after the Sell In date)", function () {
+        var quality = 50;
+        var items = [new GR.Item("Aged Brie", -10, quality)];
+        GR.update_quality(items);
+        expect(items[0].quality).toEqual(quality);
+      });
     });
 
     describe("the 'Sulfuras' (legendary item)", function() {
