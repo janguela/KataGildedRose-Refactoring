@@ -7,7 +7,7 @@ describe("Gilded Rose,", function() {
       expect(item.name).toEqual(name);
     });
 
-    it("has a SellIn value", function() {
+    it("has a Sell In value", function() {
       var sellInValue = 10;
       var item = new Item("", sellInValue, 0);
       expect(item.sell_in).toEqual(sellInValue);
@@ -44,13 +44,6 @@ describe("Gilded Rose,", function() {
       });
     });
 
-    it("the Quality of an item is never negative", function() {
-      var quality = 0;
-      items = [new Item("Item", 0, quality)];
-      update_quality();
-      expect(items[0].quality).toEqual(0);
-    });
-
     describe("the 'Aged Brie'", function() {
       it("actually increases in Quality the older it gets", function () {
         var quality = 10;
@@ -61,6 +54,13 @@ describe("Gilded Rose,", function() {
     });
 
     describe("the Quality of an item", function() {
+      it("is never negative", function() {
+        var quality = 0;
+        items = [new Item("Item", 0, quality)];
+        update_quality();
+        expect(items[0].quality).toEqual(0);
+      });
+
       it("is never more than 50", function () {
         var quality = 50;
         items = [new Item("Aged Brie", 10, quality)];
