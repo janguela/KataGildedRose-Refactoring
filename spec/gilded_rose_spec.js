@@ -59,6 +59,13 @@ describe("Gilded Rose,", function() {
           GR.global_items = GR.update_quality(GR.global_items);
           expect(GR.global_items[0].quality).toEqual(0);
         });
+
+        it("is never negative", function() {
+          var quality = 0;
+          GR.global_items = [new GR.Item("Item", this.sellIn, quality)];
+          GR.global_items = GR.update_quality(GR.global_items);
+          expect(GR.global_items[0].quality).toEqual(0);
+        });
       });
     });
 
@@ -79,12 +86,6 @@ describe("Gilded Rose,", function() {
     });
 
     describe("the Quality of an item", function() {
-      it("is never negative", function() {
-        var quality = 0;
-        GR.global_items = [new GR.Item("Item", 0, quality)];
-        GR.global_items = GR.update_quality(GR.global_items);
-        expect(GR.global_items[0].quality).toEqual(0);
-      });
 
       it("is never more than 50", function () {
         var quality = 50;
