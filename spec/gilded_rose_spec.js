@@ -23,33 +23,42 @@ describe("Gilded Rose,", function() {
   });
 
   describe("at the end of each day", function() {
-    it("SellIn value is decreased by 1", function() {
-      var sellInValue = 10;
-      GR.global_items = [new GR.Item("Item", sellInValue, 10)];
-      GR.global_items = GR.update_quality(GR.global_items);
-      expect(GR.global_items[0].sell_in).toEqual(sellInValue - 1);
-    });
 
-    it("Quality value is decreased by 1", function() {
-      var quality = 10;
-      GR.global_items = [new GR.Item("Item", 10, quality)];
-      GR.global_items = GR.update_quality(GR.global_items);
-      expect(GR.global_items[0].quality).toEqual(quality - 1);
-    });
-
-    describe("once the sell by date has passed", function() {
-      it("Quality degrades twice as fast", function () {
-        var quality = 10;
-        GR.global_items = [new GR.Item("Item", 0, quality)];
+    describe("SellIn value", function() {
+      it("is decreased by 1", function() {
+        var sellInValue = 10;
+        GR.global_items = [new GR.Item("Item", sellInValue, 10)];
         GR.global_items = GR.update_quality(GR.global_items);
-        expect(GR.global_items[0].quality).toEqual(quality - 2);
+        expect(GR.global_items[0].sell_in).toEqual(sellInValue - 1);
+      });
+    });
+
+    describe("Quality value", function() {
+      it("Quality value is decreased by 1", function() {
+        var quality = 10;
+        GR.global_items = [new GR.Item("Item", 10, quality)];
+        GR.global_items = GR.update_quality(GR.global_items);
+        expect(GR.global_items[0].quality).toEqual(quality - 1);
       });
 
-      it("Quality degrades twice as fast but never below 0", function () {
-        var quality = 1;
-        GR.global_items = [new GR.Item("Item", 0, quality)];
-        GR.global_items = GR.update_quality(GR.global_items);
-        expect(GR.global_items[0].quality).toEqual(0);
+      describe(", once the sell by date has passed,", function() {
+        beforeEach(function() {
+          this.sellIn = 0;
+        });
+
+        it("degrades twice as fast", function () {
+          var quality = 10;
+          GR.global_items = [new GR.Item("Item", this.sellIn, quality)];
+          GR.global_items = GR.update_quality(GR.global_items);
+          expect(GR.global_items[0].quality).toEqual(quality - 2);
+        });
+
+        it("degrades twice as fast but never below 0", function () {
+          var quality = 1;
+          GR.global_items = [new GR.Item("Item", this.sellIn, quality)];
+          GR.global_items = GR.update_quality(GR.global_items);
+          expect(GR.global_items[0].quality).toEqual(0);
+        });
       });
     });
 
