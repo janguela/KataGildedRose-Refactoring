@@ -26,45 +26,42 @@ function update_quality(items) {
 
 function _processItemQuality(item) {
   if (item.name != ItemTypes.AGED_BRIE && item.name != ItemTypes.CONCERT_PASSES) {
-    if (item.quality > 0) {
-      if (item.name != ItemTypes.LEGENDARY_ITEM) {
-        item.quality = item.quality - 1
-      }
+    if (item.quality > 0 && item.name != ItemTypes.LEGENDARY_ITEM) {
+      item.quality = item.quality - 1;
     }
-  } else {
+  }
+  else {
     if (item.quality < 50) {
-      item.quality = item.quality + 1
+      item.quality = item.quality + 1;
       if (item.name == ItemTypes.CONCERT_PASSES) {
-        if (item.sell_in < 11) {
-          if (item.quality < 50) {
-            item.quality = item.quality + 1
-          }
+        if (item.sell_in < 11 && item.quality < 50) {
+          item.quality = item.quality + 1;
         }
-        if (item.sell_in < 6) {
-          if (item.quality < 50) {
-            item.quality = item.quality + 1
-          }
+        if (item.sell_in < 6 && item.quality < 50) {
+          item.quality = item.quality + 1;
         }
       }
     }
   }
+
   if (item.name != ItemTypes.LEGENDARY_ITEM) {
     item.sell_in = item.sell_in - 1;
   }
+
   if (item.sell_in < 0) {
     if (item.name != ItemTypes.AGED_BRIE) {
       if (item.name != ItemTypes.CONCERT_PASSES) {
-        if (item.quality > 0) {
-          if (item.name != ItemTypes.LEGENDARY_ITEM) {
-            item.quality = item.quality - 1
-          }
+        if (item.quality > 0 && item.name != ItemTypes.LEGENDARY_ITEM) {
+          item.quality = item.quality - 1;
         }
-      } else {
-        item.quality = item.quality - item.quality
       }
-    } else {
+      else {
+        item.quality = item.quality - item.quality;
+      }
+    }
+    else {
       if (item.quality < 50) {
-        item.quality = item.quality + 1
+        item.quality = item.quality + 1;
       }
     }
   }
