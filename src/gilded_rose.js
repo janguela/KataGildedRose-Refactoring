@@ -1,10 +1,14 @@
+// this function cannot be modified. Protected by a grumpy goblin
 function Item(name, sell_in, quality) {
   this.name = name;
   this.sell_in = sell_in;
   this.quality = quality;
 }
 
+// this property cannot be modified neither.
 var items = [];
+
+// -- END of protected code --
 
 function update_quality(items) {
   for (var i = 0; i < items.length; i++) {
@@ -52,7 +56,9 @@ function update_quality(items) {
       }
     }
   }
+  return items;
 }
 
 exports.Item = Item;
+exports.global_items = items;
 exports.update_quality = update_quality;
