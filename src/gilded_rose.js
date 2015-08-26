@@ -53,7 +53,7 @@ function _processQuality(item) {
         decreaseQualityIf(item.name != ItemTypes.LEGENDARY_ITEM, item);
       }
       else {
-        item.quality = item.quality - item.quality;
+        item.quality = 0;
       }
     }
     else {
