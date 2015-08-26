@@ -48,15 +48,14 @@ function _processQuality(item) {
   }
 
   if (item.sell_in < 0) {
-    if (item.name != ItemTypes.AGED_BRIE) {
-      if (item.name == ItemTypes.CONCERT_PASSES) {
-        item.quality = 0;
-      } else {
-        decreaseQualityIf(item.name != ItemTypes.LEGENDARY_ITEM, item);
-      }
+    if (item.name == ItemTypes.AGED_BRIE) {
+      increaseQualityIf(true, item);
+    }
+    else if (item.name == ItemTypes.CONCERT_PASSES) {
+      item.quality = 0;
     }
     else {
-      increaseQualityIf(true, item);
+      decreaseQualityIf(item.name != ItemTypes.LEGENDARY_ITEM, item);
     }
   }
 }
