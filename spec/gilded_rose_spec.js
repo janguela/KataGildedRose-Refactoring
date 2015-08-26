@@ -163,5 +163,15 @@ describe("Gilded Rose,", function () {
         expect(GR.global_items[0].quality).toEqual(0);
       });
     });
+
+    describe("'Conjured item' Quality", function() {
+      it("degrades twice as fast as normal items", function () {
+        var sellIn = 10;
+        var quality = 10;
+        GR.global_items = [new GR.Item("Conjured item", sellIn, quality)];
+        GR.global_items = GR.update_quality(GR.global_items);
+        expect(GR.global_items[0].quality).toEqual(8);
+      });
+    });
   });
 });

@@ -13,7 +13,8 @@ var items = [];
 var ItemTypes = {
   AGED_BRIE : 'Aged Brie',
   CONCERT_PASSES : 'Backstage passes to a TAFKAL80ETC concert',
-  LEGENDARY_ITEM : 'Sulfuras, Hand of Ragnaros'
+  LEGENDARY_ITEM : 'Sulfuras, Hand of Ragnaros',
+  CONJURED_ITEM : 'Conjured item'
 };
 
 
@@ -40,6 +41,7 @@ function _processQuality(item) {
   }
   else {
     decreaseQualityIf(item.name != ItemTypes.LEGENDARY_ITEM, item);
+    decreaseQualityIf(item.name == ItemTypes.CONJURED_ITEM, item);
   }
 
   if (item.name == ItemTypes.CONCERT_PASSES) {
