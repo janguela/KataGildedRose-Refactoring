@@ -36,18 +36,13 @@ function _processSellInDate(item) {
 
 function _processQuality(item) {
   if (item.name == ItemTypes.AGED_BRIE || item.name == ItemTypes.CONCERT_PASSES) {
-    if (item.quality < 50) {
-      item.quality = item.quality + 1;
-      if (item.name == ItemTypes.CONCERT_PASSES) {
-        if (item.sell_in < 11 && item.quality < 50) {
-          item.quality = item.quality + 1;
-        }
-        if (item.sell_in < 6 && item.quality < 50) {
-          item.quality = item.quality + 1;
-        }
-      }
+    increaseQualityIf(true, item);
+    if (item.name == ItemTypes.CONCERT_PASSES) {
+      increaseQualityIf(item.sell_in < 11, item);
+      increaseQualityIf(item.sell_in < 6, item);
     }
-  } else {
+  }
+  else {
     if (item.quality > 0 && item.name != ItemTypes.LEGENDARY_ITEM) {
       item.quality = item.quality - 1;
     }
@@ -65,10 +60,14 @@ function _processQuality(item) {
       }
     }
     else {
-      if (item.quality < 50) {
-        item.quality = item.quality + 1;
-      }
+      increaseQualityIf(true, item);
     }
+  }
+}
+
+function increaseQualityIf(condition, item) {
+  if (condition && item.quality < 50) {
+    item.quality = item.quality + 1;
   }
 }
 
