@@ -43,17 +43,13 @@ function _processQuality(item) {
     }
   }
   else {
-    if (item.quality > 0 && item.name != ItemTypes.LEGENDARY_ITEM) {
-      item.quality = item.quality - 1;
-    }
+    decreaseQualityIf(item.name != ItemTypes.LEGENDARY_ITEM, item);
   }
 
   if (item.sell_in < 0) {
     if (item.name != ItemTypes.AGED_BRIE) {
       if (item.name != ItemTypes.CONCERT_PASSES) {
-        if (item.quality > 0 && item.name != ItemTypes.LEGENDARY_ITEM) {
-          item.quality = item.quality - 1;
-        }
+        decreaseQualityIf(item.name != ItemTypes.LEGENDARY_ITEM, item);
       }
       else {
         item.quality = item.quality - item.quality;
@@ -68,6 +64,12 @@ function _processQuality(item) {
 function increaseQualityIf(condition, item) {
   if (condition && item.quality < 50) {
     item.quality = item.quality + 1;
+  }
+}
+
+function decreaseQualityIf(condition, item) {
+  if (condition && item.quality > 0) {
+    item.quality = item.quality - 1;
   }
 }
 
