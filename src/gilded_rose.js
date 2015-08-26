@@ -37,13 +37,14 @@ function _processSellInDate(item) {
 function _processQuality(item) {
   if (item.name == ItemTypes.AGED_BRIE || item.name == ItemTypes.CONCERT_PASSES) {
     increaseQualityIf(true, item);
-    if (item.name == ItemTypes.CONCERT_PASSES) {
-      increaseQualityIf(item.sell_in < 11, item);
-      increaseQualityIf(item.sell_in < 6, item);
-    }
   }
   else {
     decreaseQualityIf(item.name != ItemTypes.LEGENDARY_ITEM, item);
+  }
+
+  if (item.name == ItemTypes.CONCERT_PASSES) {
+    increaseQualityIf(item.sell_in < 11, item);
+    increaseQualityIf(item.sell_in < 6, item);
   }
 
   if (item.sell_in < 0) {
