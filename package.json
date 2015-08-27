@@ -10,5 +10,9 @@
   "devDependencies": {
     "istanbul": "^0.3.18"
   },
-  "scripts": {}
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/janguela/KataGildedRose-Refactoring.git"
+  }
 }

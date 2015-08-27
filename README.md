@@ -1,3 +1,38 @@
+
+Use ```npm install``` to setup the project
+
+Use ```./run-tests.sh``` to execute Unit tests
+
+Use ```./run-test-coverage.sh``` to get test code coverage stats
+
+
+## Kata insights
+during the refactoring process I have tried to apply some good practices like:
+
+- remove code duplication and silly assignments
+- having 1 level depth loops
+- remove negated Ifs
+
+the process that I followed was:
+
+- first create a complete test harness, those tests had to guarantee that none of my refactors broke the current logic.
+- once I thought that I have covered all possible requirements use cases I added the test coverage tool
+  - the stats showed 2 things:
+    - there were a 2 lines of code not being tested
+    - **some code 'branches' where not covered** ('else' paths)
+  - this was a **huge 'delight'** because the coverage tool exposed some gaps in my test harness
+  - I added a few more test to achieve **100% test coverage**
+- at this point I felt pretty comfortable to start the business logic refactor
+- but prior to that, I **applied refactoring to my test harness** : regrouping and renaming them
+- I applied refactoring until I felt the code was simple enough to easily understand and extend it
+- Last part of the kata:
+  - I wrote a new test for the new requirement
+  - and added new **single line of code** to add the new logic
+  - this was my **second 'delight'** on this kata: see how easy was to introduce new business logic specially comparing it to the starting point
+
+
+
+# Original README.md
 This Kata was originally created by Terry Hughes (http://twitter.com/#!/TerryHughes). It is already on GitHub [here](https://github.com/NotMyself/GildedRose). See also [Bobby Johnson's description of the kata](http://iamnotmyself.com/2011/02/13/refactor-this-the-gilded-rose-kata/).
 
 I translated the original C# into a few other languages, (with a little help from my friends!), and slightly changed the starting position. This means I've actually done a small amount of refactoring already compared with the original form of the kata, and made it easier to get going with writing tests by giving you one failing unit test to start with. I also added test fixtures for Text-Based approval testing with TextTest (see [the TextTests](https://github.com/emilybache/GildedRose-Refactoring-Kata/tree/master/texttests))
